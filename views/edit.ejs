@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog Post</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@100;300;400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Hanuman', sans-serif;
+        }
+
+        body {
+            background-color: rgb(122, 94, 245);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #5cffc9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Edit Blog Post</h2>
+        <form action="/edit/blog/<%= data.id %>" method="POST">
+            <div class="form-group">
+                <label for="title">Blog Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= data.title %>" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Blog Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required><%= data.description %></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Blog</button>
+        </form>
+    </div>
+</body>
+
+</html>

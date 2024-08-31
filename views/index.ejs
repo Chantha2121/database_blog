@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Information</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@100;300;400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Hanuman', sans-serif;
+        }
+
+        body {
+            background-color: #48ff79;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 5% 8%;
+            background-color: #262757;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-weight: 700;
+            color: #28a745;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .col-6 {
+            width: 48%;
+            background-color: #9eedaf;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .col-6 h5 {
+            font-weight: 600;
+            color: #007bff;
+            word-wrap: break-word;
+        }
+
+        .col-6 p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            word-wrap: break-word;
+        }
+
+        .btn-success,
+        .btn-danger {
+            width: 100%;
+            font-weight: 600;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-danger {
+            width: 100%;
+        }
+
+        .navbar {
+            background-color: #262757;
+            border-bottom: 2px solid #28a745;
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #28a745 !important;
+            font-weight: 600;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #007bff !important;
+        }
+
+        footer {
+            background-color: #262757;
+            padding: 20px 0;
+            color: #28a745;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 2px solid #28a745;
+        }
+
+        footer a {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">MyBlog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#addBlog">Add Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container border border-4 border-danger rounded p-4 mt-5">
+        <h1 class="text-center">Blog Information</h1>
+        <a href="/"><button class=" btn btn-warning mt-1">Refresh</button></a>
+        <a href="/addBlog" class=""><button class="btn btn-primary mt-4">Add New Blog</button></a>
+        <div class="row justify-content-between">
+            <% data.forEach(blog => { %>
+            <div class="col-6 border border-2 h-auto my-3" id="col">
+                <h5><%= blog.title %></h5>
+                <p><%= blog.description %></p>
+                <div class="btn-group">
+                    <form action="/edit/blog/<%= blog.id %>" method="GET" class="d-inline">
+                        <button type="submit" class="btn btn-success">Edit</button>
+                    </form>
+                    <form action="/delete/<%= blog.id %>" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 MyBlog. All Rights Reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Contact Us</a>
+        </p>
+    </footer>
+</body>
+
+</html>
