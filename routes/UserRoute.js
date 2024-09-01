@@ -68,9 +68,9 @@ router.post('/edit/blog/:id', (req, res) => {
 });
 router.post('/delete/:id', (req, res) => {
     const id = parseInt(req.params.id, 10);
-    const sql = `DELETE FROM blog WHERE id = ?`;
+    const sql = `DELETE FROM blog WHERE id = ${id}`;
 
-    pool.query(sql, [id], (err, result) => {
+    pool.query(sql, (err, result) => {
         if (err) {
             console.error('Error deleting blog:', err);
             return res.status(500).send('Error deleting blog');

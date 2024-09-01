@@ -1,8 +1,8 @@
-import mysql from 'mysql'
+import mysql2 from 'mysql2'
 import {config} from 'dotenv'
 config();
 
-const pool = mysql.createPool({
+const pool = mysql2.createPool({
     host: process.env.db_host,
     port: process.env.db_port,
     user: process.env.db_user,
